@@ -7,18 +7,27 @@
     <Filter Include="Private\Graphics">
       <UniqueIdentifier>{40C7B3D4-2CC0-D226-55F2-B7AB414AB232}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Private\Input">
+      <UniqueIdentifier>{FF0EB299-6BCF-2DD0-340A-774DA08972AC}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Public">
       <UniqueIdentifier>{8480F8CA-7022-23A1-59DD-36F5451EAAF1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Public\Graphics">
       <UniqueIdentifier>{441DEF1A-B0A8-5CDF-B9B9-DFD325C4B8DF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Public\Input">
+      <UniqueIdentifier>{83836967-6FE6-F80B-186C-31C204AEC48E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Core\Public\Application.h">
+    <ClInclude Include="..\..\Source\Core\Public\FrostyCore.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Core\Public\FrostyCore.h">
+    <ClInclude Include="..\..\Source\Core\Public\FrostyGraphics.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\FrostyInput.h">
       <Filter>Public</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Core\Public\GameEngine.h">
@@ -27,46 +36,28 @@
     <ClInclude Include="..\..\Source\Core\Public\GameInstance.h">
       <Filter>Public</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Core\Public\Graphics\Camera.h">
-      <Filter>Public\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Core\Public\Graphics\Mesh.h">
-      <Filter>Public\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Core\Public\Graphics\Shader.h">
-      <Filter>Public\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Core\Public\Graphics\Transform.h">
-      <Filter>Public\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Core\Public\Graphics\Vertex.h">
-      <Filter>Public\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\Core\Public\Graphics\Window.h">
       <Filter>Public\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Input\Input.h">
+      <Filter>Public\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Input\InputManager.h">
+      <Filter>Public\Input</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Core\Private\Application.cpp">
-      <Filter>Private</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Core\Private\GameEngine.cpp">
       <Filter>Private</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Core\Private\Graphics\Camera.cpp">
-      <Filter>Private\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Core\Private\Graphics\Mesh.cpp">
-      <Filter>Private\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Core\Private\Graphics\Shader.cpp">
-      <Filter>Private\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\Core\Private\Graphics\Transform.cpp">
-      <Filter>Private\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Core\Private\Graphics\Window.cpp">
       <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Input\Input.cpp">
+      <Filter>Private\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Input\InputManager.cpp">
+      <Filter>Private\Input</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

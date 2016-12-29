@@ -51,9 +51,10 @@ workspace "Frosty Engine"
         location "Engine/Intermediates/Project Files/"
         kind "ConsoleApp"
         files { "Engine/Source/Sandbox/**.cpp", "Engine/Source/Sandbox/**.h"  }
-        links { "Common", "Core" }
+        links { "Common", "Core" }    
 
         filter "configurations:Release"
+            links { "Common", "Core", "glfw3", "opengl32", "glew32s" }   
             defines "FROSTY_STATIC_LIBRARY"
 
         filter {}
@@ -87,6 +88,7 @@ workspace "Frosty Engine"
         filter "configurations:Release"
             kind "StaticLib"
             defines "FROSTY_STATIC_LIBRARY"
+            
         filter {}
 
         setup_binaries "Common"
@@ -94,15 +96,16 @@ workspace "Frosty Engine"
     project "Core"
         location "Engine/Intermediates/Project Files/"
         files { "Engine/Source/Core/**.cpp", "Engine/Source/Core/**.h" }
-        links { "Common", "glfw3", "opengl32", "glew32" }
 
-        filter "configurations:Debug"
+        filter "configurations:Debug"  
+            links { "Common", "glfw3dll", "opengl32", "glew32" }                       
             kind "SharedLib"
             defines "FROSTY_CORE_EXPORTS"
 
         filter "configurations:Release"
             kind "StaticLib"
             defines "FROSTY_STATIC_LIBRARY"
+
         filter {}
 
         setup_binaries "Core"

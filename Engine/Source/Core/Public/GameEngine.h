@@ -1,40 +1,39 @@
 #pragma once
 
-#include <memory>
-#include <thread>
-#include <cstdint>
 #include <iostream>
+#include <chrono>
+#include <thread>
 
-#include <Utilities/Time.h>
+#include <FrostyCommon.h>
 #include <GameInstance.h>
 
 class Window;
 class FROSTY_CORE_API GameEngine
 {
 public:
-	GameEngine(GameInstance* gameInstance) : GameEngine(800, 600, 60, gameInstance) {}
-	GameEngine(int width, int height, GameInstance* gameInstance) : GameEngine(width, height, 60, gameInstance) {}
-	GameEngine(int width, int height, double frameRate, GameInstance* gameInstance) : m_GameInstance(gameInstance), m_FrameTime(1.0 / frameRate), m_Running(false) {}
+	GameEngine() : GameEngine(800, 600, 60) {}
+	GameEngine(int width, int height) : GameEngine(width, height, 60) {}
+	GameEngine(int width, int height, double frameRate) : m_FrameTime(1.0 / frameRate), m_Running(false), m_Width(width), m_Height(height) {}
 
 	void Start();
-	inline void Stop() { this->m_Running = false; }
+	void Stop();
 
 	inline int GetUPS() { return this->m_UpdatesPerSecond; }
 	inline int GetFPS() { return this->m_FramesPerSecond; }
-	inline Window* GetWindow() { return this->m_Window; }
-	inline double GetDeltaTime() { return this->m_DeltaTime; }
 private:
-	void Run();
-	void Render();
-	void Shutdown();
-
-	GameInstance* m_GameInstance;
 	Window* m_Window;
+	GameInstance* m_GameInstance;
 
 	bool m_Running;
-	double m_DeltaTime;
 	double m_FrameTime;
 
 	int m_UpdatesPerSecond;
 	int m_FramesPerSecond;
+
+	int m_Width;
+	int m_Height;
+
+	void Run();
+	void Render();
+	void Shutdown();
 };

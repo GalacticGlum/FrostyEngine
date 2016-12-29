@@ -1,8 +1,9 @@
 #include <Graphics/Window.h>
+#include <Input/Input.h>
 
 void WindowResizeCallback(GLFWwindow* window, int width, int height);
 
-Window::Window(std::string title, int width, int height) : 
+Window::Window(std::string title, int width, int height) :
 	m_Title(title), m_Width(width), m_Height(height)
 {
 	if (!this->Initialize())
@@ -10,11 +11,7 @@ Window::Window(std::string title, int width, int height) :
 		glfwTerminate();
 	}
 
-	// TODO: MOVE ME!!!
-	glFrontFace(GL_CW);
-	glCullFace(GL_BACK);
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_DEPTH_TEST);
+	Input::Initialize(this);
 }
 
 Window::~Window()
@@ -45,10 +42,10 @@ bool Window::Initialize()
 		std::cout << "Window::Initialize: Failed to initialize GLEW!\n";
 		return false;
 	}
-	
+
 	std::cout << "OpenGL " << glGetString(GL_VERSION) << "\n";
 	return true;
-} 
+}
 
 void Window::Clear()
 {

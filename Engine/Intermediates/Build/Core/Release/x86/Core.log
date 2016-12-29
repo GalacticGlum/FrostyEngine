@@ -1,0 +1,10 @@
+﻿  GameEngine.cpp
+  Window.cpp
+  Input.cpp
+  InputManager.cpp
+  Generating Code...
+  Core.vcxproj -> C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Intermediates\Project Files\..\..\Binaries\Core\Release\x86\Core.lib
+  C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Third Party\Lib\GLFW\x86\glfw3.dll
+  1 File(s) copied
+  C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Third Party\Lib\GLEW\x86\glew32.dll
+  1 File(s) copied

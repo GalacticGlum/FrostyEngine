@@ -4,10 +4,9 @@
 #include <string>
 
 #include <FrostyCore.h>
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include <FrostyGraphics.h>
 
-class FROSTY_CORE_API Window
+class Window
 {
 public:
 	Window(std::string title, int width, int height);
@@ -16,11 +15,12 @@ public:
 	void Clear();
 	void Update();
 
-	inline bool IsClosed() { return glfwWindowShouldClose(this->m_Window) == 1; }
+	inline bool IsCloseRequested() { return glfwWindowShouldClose(this->m_Window) == 1; }
 	inline int GetWidth() { return this->m_Width; }
 	inline int GetHeight() { return this->m_Height; }
+	inline GLFWwindow* GetGLFWwindow() { return this->m_Window; }
 
-	void SetTitle(std::string title) 
+	void SetTitle(std::string title)
 	{
 		this->m_Title = title;
 		glfwSetWindowTitle(this->m_Window, this->m_Title.c_str());

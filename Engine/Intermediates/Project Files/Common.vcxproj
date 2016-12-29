@@ -182,21 +182,10 @@ xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x86\*.dll" "$(OutDir)"</C
   <ItemGroup>
     <ClInclude Include="..\..\Source\Common\Public\FrostyCommon.h" />
     <ClInclude Include="..\..\Source\Common\Public\FrostyMath.h" />
-    <ClInclude Include="..\..\Source\Common\Public\Math\Mathf.h" />
-    <ClInclude Include="..\..\Source\Common\Public\Math\Matrix4f.h" />
-    <ClInclude Include="..\..\Source\Common\Public\Math\Quaternion.h" />
-    <ClInclude Include="..\..\Source\Common\Public\Math\Vector2f.h" />
-    <ClInclude Include="..\..\Source\Common\Public\Math\Vector3f.h" />
-    <ClInclude Include="..\..\Source\Common\Public\Math\Vector4f.h" />
     <ClInclude Include="..\..\Source\Common\Public\System\File.h" />
     <ClInclude Include="..\..\Source\Common\Public\Utilities\Time.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Common\Private\Math\Matrix4f.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\Math\Quaternion.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\Math\Vector2f.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\Math\Vector3f.cpp" />
-    <ClCompile Include="..\..\Source\Common\Private\Math\Vector4f.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\System\File.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Utilities\Time.cpp" />
   </ItemGroup>

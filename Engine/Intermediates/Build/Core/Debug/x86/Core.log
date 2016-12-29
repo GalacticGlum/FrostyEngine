@@ -1,0 +1,12 @@
+﻿  InputManager.cpp
+  Input.cpp
+  Window.cpp
+  GameEngine.cpp
+  Generating Code...
+     Creating library ..\..\Binaries\Core\Debug\x86\Core.lib and object ..\..\Binaries\Core\Debug\x86\Core.exp
+  Core.vcxproj -> C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Intermediates\Project Files\..\..\Binaries\Core\Debug\x86\Core.dll
+  Core.vcxproj -> ..\..\Binaries\Core\Debug\x86\Core.pdb (Full PDB)
+  C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Third Party\Lib\GLFW\x86\glfw3.dll
+  1 File(s) copied
+  C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Third Party\Lib\GLEW\x86\glew32.dll
+  1 File(s) copied
