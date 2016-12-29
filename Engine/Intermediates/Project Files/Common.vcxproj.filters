@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Private">
+      <UniqueIdentifier>{001F8D23-6CFE-0BBF-7516-9795E1747220}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Math">
+      <UniqueIdentifier>{D9E316B7-C546-A65B-6ECC-DE115A0E72DE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\System">
+      <UniqueIdentifier>{143210E8-0000-04EE-E993-7414D500E052}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Utilities">
+      <UniqueIdentifier>{6B031401-D719-1297-2091-9DB88CE6E21E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public">
+      <UniqueIdentifier>{8480F8CA-7022-23A1-59DD-36F5451EAAF1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Math">
+      <UniqueIdentifier>{DDD7AF31-498D-2827-D281-22FE3E361F2B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\System">
+      <UniqueIdentifier>{1837B66C-84F7-31A3-4D32-7B20B9B1767F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Utilities">
+      <UniqueIdentifier>{EF19BA0E-DB12-D960-0445-BEE5F09CB86C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\Common\Public\FrostyCommon.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\FrostyMath.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Math\Mathf.h">
+      <Filter>Public\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Math\Matrix4f.h">
+      <Filter>Public\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Math\Quaternion.h">
+      <Filter>Public\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Math\Vector2f.h">
+      <Filter>Public\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Math\Vector3f.h">
+      <Filter>Public\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Math\Vector4f.h">
+      <Filter>Public\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\System\File.h">
+      <Filter>Public\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Common\Public\Utilities\Time.h">
+      <Filter>Public\Utilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Common\Private\Math\Matrix4f.cpp">
+      <Filter>Private\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Math\Quaternion.cpp">
+      <Filter>Private\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Math\Vector2f.cpp">
+      <Filter>Private\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Math\Vector3f.cpp">
+      <Filter>Private\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Math\Vector4f.cpp">
+      <Filter>Private\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\System\File.cpp">
+      <Filter>Private\System</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Common\Private\Utilities\Time.cpp">
+      <Filter>Private\Utilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
