@@ -34,8 +34,9 @@ bool Window::Initialize()
 		return false;
 	}
 
-	glfwMakeContextCurrent(this->m_Window);
 	glfwSetWindowSizeCallback(this->m_Window, WindowResizeCallback);
+
+	this->MakeContextCurrent();
 
 	if (glewInit() != GLEW_OK)
 	{
@@ -49,7 +50,6 @@ bool Window::Initialize()
 
 void Window::Clear()
 {
-	glfwMakeContextCurrent(this->m_Window);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
@@ -57,6 +57,12 @@ void Window::Update()
 {
 	glfwPollEvents();
 	glfwSwapBuffers(this->m_Window);
+}
+
+void Window::SetTitle(std::string title)
+{
+	this->m_Title = title;
+	glfwSetWindowTitle(this->m_Window, this->m_Title.c_str());
 }
 
 void WindowResizeCallback(GLFWwindow* window, int width, int height)

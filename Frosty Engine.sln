@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Common", "Engine\Intermedia
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Engine\Intermediates\Project Files\Core.vcxproj", "{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Asset Copy", "Engine\Intermediates\Project Files\Asset Copy.vcxproj", "{E0329021-CCEA-D16E-35F2-AACA21C96C5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -39,6 +41,14 @@ Global
 		{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}.Release|Win32.Build.0 = Release|Win32
 		{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}.Release|x64.ActiveCfg = Release|x64
 		{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}.Release|x64.Build.0 = Release|x64
+		{E0329021-CCEA-D16E-35F2-AACA21C96C5F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E0329021-CCEA-D16E-35F2-AACA21C96C5F}.Debug|Win32.Build.0 = Debug|Win32
+		{E0329021-CCEA-D16E-35F2-AACA21C96C5F}.Debug|x64.ActiveCfg = Debug|x64
+		{E0329021-CCEA-D16E-35F2-AACA21C96C5F}.Debug|x64.Build.0 = Debug|x64
+		{E0329021-CCEA-D16E-35F2-AACA21C96C5F}.Release|Win32.ActiveCfg = Release|Win32
+		{E0329021-CCEA-D16E-35F2-AACA21C96C5F}.Release|Win32.Build.0 = Release|Win32
+		{E0329021-CCEA-D16E-35F2-AACA21C96C5F}.Release|x64.ActiveCfg = Release|x64
+		{E0329021-CCEA-D16E-35F2-AACA21C96C5F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

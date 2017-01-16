@@ -71,6 +71,6 @@ void InputManager::Update()
 void CursorPositionCallback(GLFWwindow* window, double xpos, double ypos)
 {
 	InputManager* inputManager = (InputManager*)glfwGetWindowUserPointer(window);
-	inputManager->m_MouseX = xpos;
-	inputManager->m_MouseY = ypos;
+	inputManager->m_MouseX = static_cast<float>(xpos);
+	inputManager->m_MouseY = static_cast<float>(ypos);
 }

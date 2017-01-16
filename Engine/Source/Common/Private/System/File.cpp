@@ -50,3 +50,13 @@ bool File::Exists(const std::string& filePath)
 	return file.is_open();
 }
 
+std::string File::GetExtension(const std::string& filePath)
+{
+	if (filePath.find_last_of(".") != std::string::npos)
+	{
+		return filePath.substr(filePath.find_last_of(".") + 1);
+	}
+
+	return "";
+}
+

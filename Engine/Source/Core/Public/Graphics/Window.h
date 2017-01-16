@@ -6,7 +6,7 @@
 #include <FrostyCore.h>
 #include <FrostyGraphics.h>
 
-class Window
+class FROSTY_CORE_API Window
 {
 public:
 	Window(std::string title, int width, int height);
@@ -15,18 +15,15 @@ public:
 	void Clear();
 	void Update();
 
+	inline void MakeContextCurrent() { glfwMakeContextCurrent(this->m_Window); }
+
 	inline bool IsCloseRequested() { return glfwWindowShouldClose(this->m_Window) == 1; }
 	inline int GetWidth() { return this->m_Width; }
 	inline int GetHeight() { return this->m_Height; }
 	inline GLFWwindow* GetGLFWwindow() { return this->m_Window; }
 
-	void SetTitle(std::string title)
-	{
-		this->m_Title = title;
-		glfwSetWindowTitle(this->m_Window, this->m_Title.c_str());
-	}
-
-	void SetClearColour(float red, float green, float blue, float alpha) { glClearColor(red, green, blue, alpha); }
+	void SetTitle(std::string title);
+	inline void SetClearColour(float red, float green, float blue, float alpha) { glClearColor(red, green, blue, alpha); }
 private:
 	GLFWwindow* m_Window;
 

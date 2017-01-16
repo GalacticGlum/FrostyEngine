@@ -115,7 +115,8 @@
     </ProjectReference>
     <PostBuildEvent>
       <Command>xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLFW\x64\*.dll" $(OutDir)
-xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)</Command>
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\IrrKlang\x64\*.dll" $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -142,7 +143,8 @@ xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)</Com
     </ProjectReference>
     <PostBuildEvent>
       <Command>xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLFW\x86\*.dll" "$(OutDir)"
-xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x86\*.dll" "$(OutDir)"</Command>
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x86\*.dll" "$(OutDir)"
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\IrrKlang\x86\*.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -157,13 +159,14 @@ xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x86\*.dll" "$(OutDir)"</C
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Third Party\Lib\GLEW\x64;..\..\Third Party\Lib\GLFW\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;glew32.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Third Party\Lib\GLEW\x64;..\..\Third Party\Lib\GLFW\x64;..\..\Third Party\Lib\IrrKlang\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\..\Binaries\Core\Debug\x64\Core.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLFW\x64\*.dll" $(OutDir)
-xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)</Command>
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\IrrKlang\x64\*.dll" $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -178,27 +181,52 @@ xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)</Com
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Third Party\Lib\GLEW\x86;..\..\Third Party\Lib\GLFW\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3dll.lib;opengl32.lib;glew32.lib;irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Third Party\Lib\GLEW\x86;..\..\Third Party\Lib\GLFW\x86;..\..\Third Party\Lib\IrrKlang\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\..\Binaries\Core\Debug\x86\Core.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLFW\x86\*.dll" "$(OutDir)"
-xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x86\*.dll" "$(OutDir)"</Command>
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x86\*.dll" "$(OutDir)"
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\IrrKlang\x86\*.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Core\Public\Application.h" />
+    <ClInclude Include="..\..\Source\Core\Public\Audio\AudioClip.h" />
+    <ClInclude Include="..\..\Source\Core\Public\Audio\AudioSubsystem.h" />
+    <ClInclude Include="..\..\Source\Core\Public\FrostyAudio.h" />
     <ClInclude Include="..\..\Source\Core\Public\FrostyCore.h" />
     <ClInclude Include="..\..\Source\Core\Public\FrostyGraphics.h" />
     <ClInclude Include="..\..\Source\Core\Public\FrostyInput.h" />
     <ClInclude Include="..\..\Source\Core\Public\GameEngine.h" />
     <ClInclude Include="..\..\Source\Core\Public\GameInstance.h" />
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Camera.h" />
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Material.h" />
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Mesh.h" />
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\RenderingSubsystem.h" />
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Shader.h" />
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Shaders\BasicShader.h" />
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Texture.h" />
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Transform.h" />
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Vertex.h" />
     <ClInclude Include="..\..\Source\Core\Public\Graphics\Window.h" />
     <ClInclude Include="..\..\Source\Core\Public\Input\Input.h" />
     <ClInclude Include="..\..\Source\Core\Public\Input\InputManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Core\Private\Application.cpp" />
+    <ClCompile Include="..\..\Source\Core\Private\Audio\AudioClip.cpp" />
+    <ClCompile Include="..\..\Source\Core\Private\Audio\AudioSubsystem.cpp" />
     <ClCompile Include="..\..\Source\Core\Private\GameEngine.cpp" />
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Camera.cpp" />
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Material.cpp" />
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Mesh.cpp" />
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\RenderingSubsystem.cpp" />
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Shader.cpp" />
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Shaders\BasicShader.cpp" />
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Texture.cpp" />
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Transform.cpp" />
     <ClCompile Include="..\..\Source\Core\Private\Graphics\Window.cpp" />
     <ClCompile Include="..\..\Source\Core\Private\Input\Input.cpp" />
     <ClCompile Include="..\..\Source\Core\Private\Input\InputManager.cpp" />

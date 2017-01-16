@@ -4,8 +4,14 @@
     <Filter Include="Private">
       <UniqueIdentifier>{001F8D23-6CFE-0BBF-7516-9795E1747220}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Private\Audio">
+      <UniqueIdentifier>{01ED2499-6DAD-A0CF-36E8-E94CA267E5AB}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Private\Graphics">
       <UniqueIdentifier>{40C7B3D4-2CC0-D226-55F2-B7AB414AB232}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Private\Graphics\Shaders">
+      <UniqueIdentifier>{192C8B01-0551-DA81-2E9C-BF111A20D99F}</UniqueIdentifier>
     </Filter>
     <Filter Include="Private\Input">
       <UniqueIdentifier>{FF0EB299-6BCF-2DD0-340A-774DA08972AC}</UniqueIdentifier>
@@ -13,14 +19,32 @@
     <Filter Include="Public">
       <UniqueIdentifier>{8480F8CA-7022-23A1-59DD-36F5451EAAF1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Public\Audio">
+      <UniqueIdentifier>{8561DC66-71C4-6B0B-1A4A-A4C1068C378E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Public\Graphics">
       <UniqueIdentifier>{441DEF1A-B0A8-5CDF-B9B9-DFD325C4B8DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Public\Graphics\Shaders">
+      <UniqueIdentifier>{1D46AEF2-897D-F689-9287-5AADFE3D1D83}</UniqueIdentifier>
     </Filter>
     <Filter Include="Public\Input">
       <UniqueIdentifier>{83836967-6FE6-F80B-186C-31C204AEC48E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Core\Public\Application.h">
+      <Filter>Public</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Audio\AudioClip.h">
+      <Filter>Public\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Audio\AudioSubsystem.h">
+      <Filter>Public\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\FrostyAudio.h">
+      <Filter>Public</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Core\Public\FrostyCore.h">
       <Filter>Public</Filter>
     </ClInclude>
@@ -36,6 +60,33 @@
     <ClInclude Include="..\..\Source\Core\Public\GameInstance.h">
       <Filter>Public</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Camera.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Material.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Mesh.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\RenderingSubsystem.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Shader.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Shaders\BasicShader.h">
+      <Filter>Public\Graphics\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Texture.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Transform.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Core\Public\Graphics\Vertex.h">
+      <Filter>Public\Graphics</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\Core\Public\Graphics\Window.h">
       <Filter>Public\Graphics</Filter>
     </ClInclude>
@@ -47,8 +98,41 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Core\Private\Application.cpp">
+      <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Audio\AudioClip.cpp">
+      <Filter>Private\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Audio\AudioSubsystem.cpp">
+      <Filter>Private\Audio</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\Core\Private\GameEngine.cpp">
       <Filter>Private</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Camera.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Material.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Mesh.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\RenderingSubsystem.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Shader.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Shaders\BasicShader.cpp">
+      <Filter>Private\Graphics\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Texture.cpp">
+      <Filter>Private\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Core\Private\Graphics\Transform.cpp">
+      <Filter>Private\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Core\Private\Graphics\Window.cpp">
       <Filter>Private\Graphics</Filter>

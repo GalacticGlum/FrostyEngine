@@ -1,4 +1,15 @@
-﻿  GameEngine.cpp
+﻿  Application.cpp
+  AudioClip.cpp
+  AudioSubsystem.cpp
+  GameEngine.cpp
+  Camera.cpp
+  Material.cpp
+  Mesh.cpp
+  RenderingSubsystem.cpp
+  Shader.cpp
+  BasicShader.cpp
+  Texture.cpp
+  Transform.cpp
   Window.cpp
   Input.cpp
   InputManager.cpp

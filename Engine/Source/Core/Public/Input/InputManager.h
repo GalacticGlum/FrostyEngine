@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include <FrostyCore.h>
+#include <FrostyMath.h>
 #include <FrostyGraphics.h>
 
 #define MAX_KEYS 512
@@ -12,7 +13,6 @@ class InputManager
 {
 public:
 	InputManager(Window* window);
-
 	void Update();
 
 	inline bool GetKey(Key key) { return glfwGetKey(this->m_Window, (int)key) == GLFW_PRESS; }
@@ -23,9 +23,9 @@ public:
 	inline bool GetMouseButtonDown(MouseButton mouseButton) { return this->m_DownMouseButtons[(int)mouseButton]; }
 	inline bool GetMouseButtonUp(MouseButton mouseButton) { return this->m_UpMouseButtons[(int)mouseButton]; }
 
-	//Vecto2f GetMousePosition();
-	//inline void SetMousePosition(float x, float y);
-	//void SetMousePosition(const Vector2f& position);
+	inline Vector2f GetMousePosition() { return Vector2f(this->m_MouseX, this->m_MouseY); }
+	inline void SetMousePosition(float x, float y) { this->SetMousePosition(Vector2f(x, y)); }
+	inline void SetMousePosition(const Vector2f& position) { glfwSetCursorPos(this->m_Window, position.X, position.Y); }
 
 	inline bool GetCursorVisibility() { return (glfwGetInputMode(this->m_Window, GLFW_CURSOR) == GLFW_CURSOR_NORMAL); }
 	inline void ShowCursor(bool visibility) { glfwSetInputMode(this->m_Window, GLFW_CURSOR, visibility ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_HIDDEN); }
@@ -38,8 +38,8 @@ private:
 	bool m_DownMouseButtons[MAX_MOUSE_BUTTONS];
 	bool m_UpMouseButtons[MAX_MOUSE_BUTTONS];
 
-	double m_MouseX;
-	double m_MouseY;
+	float m_MouseX;
+	float m_MouseY;
 
 	GLFWwindow* m_Window;
 

@@ -12,5 +12,6 @@
 #define FROSTY_CORE_API 
 #endif
 
+#include <Application.h>
 #include <GameEngine.h>
 #include <GameInstance.h>

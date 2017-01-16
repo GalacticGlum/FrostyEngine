@@ -7,10 +7,10 @@
 class GameInstance
 {
 public:
-	virtual void Start() {}
-	virtual void Update() {}
-	virtual void Tick() {}
-	virtual void Render() {}
-	virtual void Shutdown() {}
+	virtual void Start() = 0;
+	virtual void Update() = 0;
+	virtual void Render() = 0;
+	virtual void Shutdown() = 0;
 
+	virtual void Tick() {}
 };

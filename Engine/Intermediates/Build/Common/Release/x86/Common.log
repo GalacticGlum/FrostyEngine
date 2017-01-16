@@ -1,4 +1,14 @@
-﻿  File.cpp
+﻿  Colour.cpp
+  MathFunctions.cpp
+  Matrix4f.cpp
+  Quaternion.cpp
+  Rectangle.cpp
+  Vector2f.cpp
+  Vector3f.cpp
+  Vector4f.cpp
+  File.cpp
+  Random.cpp
+  String.cpp
   Time.cpp
   Generating Code...
   Common.vcxproj -> C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Intermediates\Project Files\..\..\Binaries\Common\Release\x86\Common.lib

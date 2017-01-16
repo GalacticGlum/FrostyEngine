@@ -16,6 +16,8 @@ function setup_binaries(project_name)
          objdir ("Engine/Intermediates/Build/" .. project_name .. "/Release/x64")
 
     filter {}
+
+    debugdir "$(TargetDir)" 
 end
 
 workspace "Frosty Engine"
@@ -37,12 +39,14 @@ workspace "Frosty Engine"
         libdirs "Engine/Third Party/Lib/*/x86"
         postbuildcommands { "xcopy /Y /C \"$(SolutionDir)Engine\\Third Party\\Lib\\GLFW\\x86\\*.dll\" \"$(OutDir)\"" } 
         postbuildcommands { "xcopy /Y /C \"$(SolutionDir)Engine\\Third Party\\Lib\\GLEW\\x86\\*.dll\" \"$(OutDir)\"" } 
+        postbuildcommands { "xcopy /Y /C \"$(SolutionDir)Engine\\Third Party\\Lib\\IrrKlang\\x86\\*.dll\" \"$(OutDir)\"" } 
 
     filter "platforms:x64"
         architecture "x86_64"
         libdirs "Engine/Third Party/Lib/*/x64"
         postbuildcommands { "xcopy /Y /C \"$(SolutionDir)Engine\\Third Party\\Lib\\GLFW\\x64\\*.dll\" $(OutDir)" } 
         postbuildcommands { "xcopy /Y /C \"$(SolutionDir)Engine\\Third Party\\Lib\\GLEW\\x64\\*.dll\" $(OutDir)" } 
+        postbuildcommands { "xcopy /Y /C \"$(SolutionDir)Engine\\Third Party\\Lib\\IrrKlang\\x64\\*.dll\" $(OutDir)" } 
 
     filter {}
         includedirs { "Engine/Third Party/Include", "Engine/Source/*/Public" }
@@ -51,14 +55,11 @@ workspace "Frosty Engine"
         location "Engine/Intermediates/Project Files/"
         kind "ConsoleApp"
         files { "Engine/Source/Sandbox/**.cpp", "Engine/Source/Sandbox/**.h"  }
-        links { "Common", "Core" }    
+        links { "Common", "Core", "irrKlang" }    
 
         filter "configurations:Release"
-            links { "Common", "Core", "glfw3", "opengl32", "glew32s" }   
+            links { "Common", "Core", "glfw3", "opengl32", "glew32s", "irrKlang" }   
             defines "FROSTY_STATIC_LIBRARY"
-
-        filter {}
-            postbuildcommands { "xcopy \"$(SolutionDir)Engine\\Assets\" \"$(TargetDir)\\Assets\" /Y /S /D /I" }
 
         filter { "configurations:Debug", "platforms:x86" }
             postbuildcommands { 
@@ -98,7 +99,7 @@ workspace "Frosty Engine"
         files { "Engine/Source/Core/**.cpp", "Engine/Source/Core/**.h" }
 
         filter "configurations:Debug"  
-            links { "Common", "glfw3dll", "opengl32", "glew32" }                       
+            links { "Common", "glfw3dll", "opengl32", "glew32", "irrKlang" }                       
             kind "SharedLib"
             defines "FROSTY_CORE_EXPORTS"
 
@@ -109,3 +110,10 @@ workspace "Frosty Engine"
         filter {}
 
         setup_binaries "Core"
+
+    project "Asset Copy"
+        location "Engine/Intermediates/Project Files/"
+        kind "Utility"                
+
+        postbuildcommands { "del /Q /F /S \"$(SolutionDir)Engine\\Binaries\\Sandbox\\%{cfg.buildcfg}\\%{cfg.platform}\\Assets\"" }        
+        postbuildcommands { "xcopy \"$(SolutionDir)Engine\\Assets\" \"$(SolutionDir)Engine\\Binaries\\Sandbox\\%{cfg.buildcfg}\\%{cfg.platform}\\Assets\" /Y /S /D /I" }        

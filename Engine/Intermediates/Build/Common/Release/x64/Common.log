@@ -1,0 +1,18 @@
+﻿  Colour.cpp
+  MathFunctions.cpp
+  Matrix4f.cpp
+  Quaternion.cpp
+  Rectangle.cpp
+  Vector2f.cpp
+  Vector3f.cpp
+  Vector4f.cpp
+  File.cpp
+  Random.cpp
+  String.cpp
+  Time.cpp
+  Generating Code...
+  Common.vcxproj -> C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Intermediates\Project Files\..\..\Binaries\Common\Release\x64\Common.lib
+  C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Third Party\Lib\GLFW\x64\glfw3.dll
+  1 File(s) copied
+  C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Third Party\Lib\GLEW\x64\glew32.dll
+  1 File(s) copied

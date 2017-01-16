@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include <FrostyCore.h>
+#include <FrostyMath.h>
 
 class InputManager;
 enum class Key;
@@ -22,9 +23,9 @@ public:
 	static bool GetMouseButtonDown(MouseButton mouseButton);
 	static bool GetMouseButtonUp(MouseButton mouseButton);
 
-	//static Vecto2f GetMousePosition();
-	//static void SetMousePosition(float x, float y);
-	//static void SetMousePosition(const Vector2f& position);
+	static Vector2f GetMousePosition();
+	inline static void SetMousePosition(float x, float y) { SetMousePosition(Vector2f(x, y)); }
+	static void SetMousePosition(const Vector2f& position);
 
 	static bool GetCursorVisibility();
 	static void ShowCursor(bool visibility);

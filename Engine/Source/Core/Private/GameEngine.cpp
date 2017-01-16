@@ -1,6 +1,7 @@
 #include <GameEngine.h>
-#include <FrostyGraphics.h>
 #include <FrostyInput.h>
+#include <FrostyGraphics.h>
+#include <FrostyAudio.h>
 
 void GameEngine::Start()
 {
@@ -9,8 +10,12 @@ void GameEngine::Start()
 		return;
 	}
 
-	this->m_Window = new Window("Frosty Engine", this->m_Width, this->m_Height);
-	this->m_GameInstance = new GameInstance();
+	this->m_Window = new Window(this->m_WindowTitle, this->m_Width, this->m_Height);
+	
+	RenderingSubsystem::Initialize();
+	AudioSubsystem::Initialize();
+	Random::Initialize();
+
 	this->m_GameInstance->Start();
 	this->Run();
 }
@@ -24,6 +29,7 @@ void GameEngine::Stop()
 
 	this->m_Running = false;
 }
+
 void GameEngine::Run()
 {
 	this->m_Running = true;
@@ -50,8 +56,6 @@ void GameEngine::Run()
 			this->m_UpdatesPerSecond = updateCount;
 			this->m_FramesPerSecond = frameCount;
 
-			std::cout << "FPS: " << this->GetFPS() << ", UPS: " << this->GetUPS() << "\n";
-
 			frameCount = 0;
 			updateCount = 0;
 			frameTimer = 0;
@@ -68,6 +72,8 @@ void GameEngine::Run()
 
 			Time::SetDeltaTime(this->m_FrameTime);
 			Input::Update();
+			AudioSubsystem::Update();
+
 			this->m_GameInstance->Update();
 
 			doRender = true;
@@ -90,6 +96,7 @@ void GameEngine::Run()
 
 void GameEngine::Render()
 {
+	this->m_Window->MakeContextCurrent();
 	this->m_Window->Clear();
 	this->m_GameInstance->Render();
 	this->m_Window->Update();
@@ -98,5 +105,6 @@ void GameEngine::Render()
 void GameEngine::Shutdown()
 {
 	this->m_GameInstance->Shutdown();
+	AudioSubsystem::Shutdown();
 	delete this->m_Window;
 }

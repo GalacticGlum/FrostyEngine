@@ -45,6 +45,16 @@ bool Input::GetMouseButtonUp(MouseButton mouseButton)
 	return m_InputManager->GetMouseButtonUp(mouseButton);
 }
 
+Vector2f Input::GetMousePosition()
+{
+	return m_InputManager->GetMousePosition();
+}
+
+void Input::SetMousePosition(const Vector2f& position)
+{
+	m_InputManager->SetMousePosition(position);
+}
+
 bool Input::GetCursorVisibility() 
 { 
 	return m_InputManager->GetCursorVisibility(); 

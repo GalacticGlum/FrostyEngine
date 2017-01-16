@@ -1,7 +1,16 @@
 c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\inputmanager.obj
 c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\input.obj
 c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\window.obj
+c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\transform.obj
+c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\texture.obj
+c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\basicshader.obj
+c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\shader.obj
+c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\renderingsubsystem.obj
+c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\mesh.obj
+c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\material.obj
+c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\camera.obj
 c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\gameengine.obj
+c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\application.obj
 c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\binaries\core\release\x86\core.lib
 c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\project files\..\..\binaries\core\release\x86\core.lib
 c:\users\greg4\documents\projects\visual studio 2015\projects\frosty engine\engine\intermediates\build\core\release\x86\core.tlog\cl.command.1.tlog

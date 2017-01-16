@@ -112,7 +112,8 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLFW\x64\*.dll" $(OutDir)
-xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)</Command>
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\IrrKlang\x64\*.dll" $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -136,7 +137,8 @@ xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)</Com
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLFW\x86\*.dll" "$(OutDir)"
-xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x86\*.dll" "$(OutDir)"</Command>
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x86\*.dll" "$(OutDir)"
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\IrrKlang\x86\*.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -151,12 +153,13 @@ xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x86\*.dll" "$(OutDir)"</C
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\Third Party\Lib\GLEW\x64;..\..\Third Party\Lib\GLFW\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Third Party\Lib\GLEW\x64;..\..\Third Party\Lib\GLFW\x64;..\..\Third Party\Lib\IrrKlang\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\..\Binaries\Common\Debug\x64\Common.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLFW\x64\*.dll" $(OutDir)
-xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)</Command>
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\IrrKlang\x64\*.dll" $(OutDir)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -171,22 +174,43 @@ xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x64\*.dll" $(OutDir)</Com
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\Third Party\Lib\GLEW\x86;..\..\Third Party\Lib\GLFW\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Third Party\Lib\GLEW\x86;..\..\Third Party\Lib\GLFW\x86;..\..\Third Party\Lib\IrrKlang\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ImportLibrary>..\..\Binaries\Common\Debug\x86\Common.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLFW\x86\*.dll" "$(OutDir)"
-xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x86\*.dll" "$(OutDir)"</Command>
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\GLEW\x86\*.dll" "$(OutDir)"
+xcopy /Y /C "$(SolutionDir)Engine\Third Party\Lib\IrrKlang\x86\*.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\Common\Public\Colour.h" />
     <ClInclude Include="..\..\Source\Common\Public\FrostyCommon.h" />
     <ClInclude Include="..\..\Source\Common\Public\FrostyMath.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Math\MathFunctions.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Math\Matrix4f.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Math\Quaternion.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Math\Rectangle.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Math\Vector2f.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Math\Vector3f.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Math\Vector4f.h" />
     <ClInclude Include="..\..\Source\Common\Public\System\File.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utilities\Random.h" />
+    <ClInclude Include="..\..\Source\Common\Public\Utilities\String.h" />
     <ClInclude Include="..\..\Source\Common\Public\Utilities\Time.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\Common\Private\Colour.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Math\MathFunctions.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Math\Matrix4f.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Math\Quaternion.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Math\Rectangle.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Math\Vector2f.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Math\Vector3f.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Math\Vector4f.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\System\File.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utilities\Random.cpp" />
+    <ClCompile Include="..\..\Source\Common\Private\Utilities\String.cpp" />
     <ClCompile Include="..\..\Source\Common\Private\Utilities\Time.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

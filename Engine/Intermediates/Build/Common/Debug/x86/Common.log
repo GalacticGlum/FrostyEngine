@@ -1,5 +1,15 @@
 ﻿  Time.cpp
+  String.cpp
+  Random.cpp
   File.cpp
+  Vector4f.cpp
+  Vector3f.cpp
+  Vector2f.cpp
+  Rectangle.cpp
+  Quaternion.cpp
+  Matrix4f.cpp
+  MathFunctions.cpp
+  Colour.cpp
   Generating Code...
      Creating library ..\..\Binaries\Common\Debug\x86\Common.lib and object ..\..\Binaries\Common\Debug\x86\Common.exp
   Common.vcxproj -> C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Intermediates\Project Files\..\..\Binaries\Common\Debug\x86\Common.dll
@@ -8,3 +18,6 @@
   1 File(s) copied
   C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Third Party\Lib\GLEW\x86\glew32.dll
   1 File(s) copied
+  C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Third Party\Lib\IrrKlang\x86\ikpFlac.dll
+  C:\Users\greg4\Documents\Projects\Visual Studio 2015\Projects\Frosty Engine\Engine\Third Party\Lib\IrrKlang\x86\irrKlang.dll
+  2 File(s) copied
