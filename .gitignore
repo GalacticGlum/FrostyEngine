@@ -1,0 +1,8 @@
+# Custom exclusions based on build system settings
+
+/Frosty Engine.sln
+*.VC.db
+.git
+.vs
+/Engine/Binaries
+/Engine/Intermediates
