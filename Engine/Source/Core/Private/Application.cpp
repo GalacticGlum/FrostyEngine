@@ -1,9 +1,13 @@
 #include <Application.h>
-#include <FrostyCore.h>
 
-GameEngine* Application::m_GameEngine = nullptr;
-void Application::Launch(const std::string& windowTitle, int width, int height, GameInstance* gameInstance)
+std::shared_ptr<GameEngine> Application::s_GameEngine;
+
+void Application::CreateContext(const std::string& windowTitle, int width, int height)
 {
-	Application::m_GameEngine = new GameEngine(gameInstance, width, height, windowTitle);
-	Application::m_GameEngine->Start();
+	Application::s_GameEngine = std::make_shared<GameEngine>(width, height, windowTitle);
+}
+
+void Application::Launch(GameInstance* gameInstance)
+{
+	Application::s_GameEngine->Start(gameInstance);
 }

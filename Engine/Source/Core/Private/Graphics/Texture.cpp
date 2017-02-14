@@ -5,8 +5,7 @@
 
 #include <cassert>
 
-const Texture* Texture::m_LastBind = nullptr;
-
+GLuint Texture::m_LastBindID = 0;
 Texture::Texture(const std::string& filePath, GLenum textureTarget, GLfloat filter)
 {
 	int width;
@@ -55,13 +54,13 @@ void Texture::Initialize(int width, int height, unsigned char* data, GLenum text
 void Texture::Bind(unsigned int unit) const
 {
 	// Make sure we aren't binding the same texture again
-	if (Texture::m_LastBind != this)
+	if (Texture::m_LastBindID != this->m_TextureID)
 	{
 		// Make sure unit is not out of range
 		assert(unit >= 0 && unit <= 31);
 
 		glActiveTexture(GL_TEXTURE0 + unit);
 		glBindTexture(this->m_TextureTarget, this->m_TextureID);
-		Texture::m_LastBind = this;
-	}
+		Texture::m_LastBindID = this->m_TextureID;
+	} 
 }

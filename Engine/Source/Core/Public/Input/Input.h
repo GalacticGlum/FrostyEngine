@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <memory>
 
 #include <FrostyCore.h>
 #include <FrostyMath.h>
@@ -30,5 +31,5 @@ public:
 	static bool GetCursorVisibility();
 	static void ShowCursor(bool visibility);
 private:
-	static InputManager* m_InputManager;
+	static std::unique_ptr<InputManager> s_InputManager;
 };

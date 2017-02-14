@@ -9,6 +9,7 @@
 #define MAX_KEYS 512
 #define MAX_MOUSE_BUTTONS 256
 
+class Window;
 class InputManager
 {
 public:

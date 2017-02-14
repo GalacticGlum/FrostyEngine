@@ -3,20 +3,20 @@
 #include <FrostyGraphics.h>
 #include <FrostyAudio.h>
 
-void GameEngine::Start()
+void GameEngine::Start(GameInstance* gameInstance)
 {
 	if (this->m_Running == true)
 	{
 		return;
 	}
 
+	this->m_GameInstance = gameInstance;
 	this->m_Window = new Window(this->m_WindowTitle, this->m_Width, this->m_Height);
 	
 	RenderingSubsystem::Initialize();
 	AudioSubsystem::Initialize();
 	Random::Initialize();
 
-	this->m_GameInstance->Start();
 	this->Run();
 }
 
@@ -41,6 +41,7 @@ void GameEngine::Run()
 	int frameCount = 0;
 	int updateCount = 0;
 
+	this->m_GameInstance->Start();
 	while (this->m_Running)
 	{
 		bool doRender = false;
@@ -70,11 +71,11 @@ void GameEngine::Run()
 				this->Stop();
 			}
 
-			Time::SetDeltaTime(this->m_FrameTime);
 			Input::Update();
 			AudioSubsystem::Update();
+			GameObject::UpdateAllObjects(static_cast<float>(this->m_FrameTime));
 
-			this->m_GameInstance->Update();
+			this->m_GameInstance->Update(static_cast<float>(this->m_FrameTime));
 
 			doRender = true;
 			updateTimer -= this->m_FrameTime;
@@ -97,6 +98,7 @@ void GameEngine::Run()
 void GameEngine::Render()
 {
 	this->m_Window->MakeContextCurrent();
+
 	this->m_Window->Clear();
 	this->m_GameInstance->Render();
 	this->m_Window->Update();

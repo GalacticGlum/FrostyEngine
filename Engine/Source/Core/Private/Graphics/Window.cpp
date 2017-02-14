@@ -1,5 +1,4 @@
 #include <Graphics/Window.h>
-#include <Input/Input.h>
 
 void WindowResizeCallback(GLFWwindow* window, int width, int height);
 

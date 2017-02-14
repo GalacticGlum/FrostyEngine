@@ -1,15 +1,17 @@
 #pragma once
 
 #include <string>
+#include <memory>
+
 #include <FrostyCore.h>
 
-class GameInstance;
 class GameEngine;
 class FROSTY_CORE_API Application
 {
 public:
-	static void Launch(const std::string& windowTitle, int width, int height, GameInstance* gameInstance);
-	inline static GameEngine* GetEngine() { return m_GameEngine; }
+	static void CreateContext(const std::string& windowTitle, int width, int height);
+	static void Launch(GameInstance* gameInstance);
+	inline static std::shared_ptr<GameEngine> GetEngine() { return s_GameEngine; }
 private:
-	static GameEngine* m_GameEngine;
+	static std::shared_ptr<GameEngine> s_GameEngine;
 };

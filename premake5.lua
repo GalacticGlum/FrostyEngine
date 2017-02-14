@@ -55,7 +55,7 @@ workspace "Frosty Engine"
         location "Engine/Intermediates/Project Files/"
         kind "ConsoleApp"
         files { "Engine/Source/Sandbox/**.cpp", "Engine/Source/Sandbox/**.h"  }
-        links { "Common", "Core", "irrKlang" }    
+        links { "Common", "Core", "opengl32", "glew32", "irrKlang" }    
 
         filter "configurations:Release"
             links { "Common", "Core", "glfw3", "opengl32", "glew32s", "irrKlang" }   

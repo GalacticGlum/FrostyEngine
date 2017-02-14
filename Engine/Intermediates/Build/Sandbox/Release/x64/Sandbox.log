@@ -1,5 +1,0 @@
-﻿  main.cpp
-LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
-main.obj : error LNK2019: unresolved external symbol gc_initialize referenced in function main
-..\..\Third Party\Lib\Gorilla\x64\gorilla.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
-..\..\Binaries\Sandbox\Release\x64\Sandbox.exe : fatal error LNK1120: 1 unresolved externals

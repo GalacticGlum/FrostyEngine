@@ -21,5 +21,5 @@ private:
 	GLuint m_TextureID;
 
 	void Initialize(int width, int height, unsigned char* data, GLenum textureTarget, GLfloat filter);
-	static const Texture* m_LastBind;
+	static GLuint m_LastBindID;
 };

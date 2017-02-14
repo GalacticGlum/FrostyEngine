@@ -1,7 +1,6 @@
 #include <Utilities/Time.h>
 
 std::chrono::high_resolution_clock::time_point Time::m_Epoch = std::chrono::high_resolution_clock::now();
-double Time::m_DeltaTime = 0.0;
 const double Time::SECOND = 1000000000.0;
 
 double Time::GetTime()
