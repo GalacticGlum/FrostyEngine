@@ -121,3 +121,15 @@ void Shader::SetUniform(const std::string& uniformName, const Colour& value, boo
 			static_cast<float>(value.B) / 255.0f);
 	}
 }
+
+void Shader::SetUniform(const std::string& uniformName, const Light& light)
+{
+	this->SetUniform(uniformName + ".colour", light.LightColour, false);
+	this->SetUniform(uniformName + ".intensity", light.Intensity);
+}
+
+void Shader::SetUniform(const std::string& uniformName, const DirectionalLight& light)
+{
+	this->SetUniform(uniformName + ".baseLight", light.BaseLight);
+	this->SetUniform(uniformName + ".direction", light.Direction);
+}

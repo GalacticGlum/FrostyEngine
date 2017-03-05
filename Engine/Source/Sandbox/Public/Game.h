@@ -24,46 +24,31 @@ class Game : GameInstance
 public:
 	void Start() override
 	{
-		Vertex vertices[] =
-		{
-			Vertex(Vector3f(-1, -1, 0), Vector2f(0, 0)),
-			Vertex(Vector3f(0, 1, 0), Vector2f(0.5f, 0)),
-			Vertex(Vector3f(1, -1, 0), Vector2f(1.0f, 0)),
-			Vertex(Vector3f(0, -1, 1), Vector2f(0, 0.5f))
+		Vertex vertices[] = 
+		{ 
+			Vertex(Vector3f(-1.0f, -1.0f, 0.5773f), Vector2f(0.0f, 0.0f)),
+			Vertex(Vector3f(0.0f, -1.0f, -1.15475f), Vector2f(0.5f, 0.0f)),
+			Vertex(Vector3f(1.0f, -1.0f, 0.5773f), Vector2f(1.0f, 0.0f)),
+			Vertex(Vector3f(0.0f, 1.0f, 0.0f), Vector2f(0.5f, 1.0f))
 		};
 
-		int indices[] =
+		int indices[] = 
 		{
-			0, 1, 3,
-			3, 1, 2,
-			2, 1, 0,
-			0, 3, 2
+			0, 3, 1,
+			1, 3, 2,
+			2, 3, 0,
+			1, 2, 0 
 		};
 
-		//Vertex vertices[] =
-		//{
-		//	Vertex(Vector3f(-1, -1, 0.5773f), Vector2f(0, 0)),
-		//	Vertex(Vector3f(0, -1, -1.15475f), Vector2f(0.5f, 0)),
-		//	Vertex(Vector3f(1, -1, 0.5773f), Vector2f(1, 0)),
-		//	Vertex(Vector3f(0, 1, 0), Vector2f(0.5f, 1))
-		//};
-
-		//int indices[] =
-		//{
-		//	0, 3, 1,
-		//	1, 3, 2,
-		//	2, 3, 0,
-		//	1, 2, 0
-		//};
-
-		//this->m_Mesh = new Mesh(vertices, 4, indices, 12);
-
-		this->m_Mesh = new Mesh(vertices, 4, indices, 12);
+		this->m_Mesh = new Mesh(vertices, 4, indices, 12, true);
 		this->m_Transform = new Transform();
 		this->m_Camera = new Camera();
 
-		m_Material = new Material(Colour(0, 255, 0));
+		m_Material = new Material();
 		this->m_Shader = PhongShader::GetInstance();
+
+		this->m_Shader->SetAmbientColour(Colour(25.5f, 25.5f, 25.5f));
+		this->m_Shader->SetDirectionalLight(DirectionalLight(Light(Colour(251, 255, 181), 0.8f), Vector3f(1, 1, 1)));
 
 		m_AudioClip = new AudioClip("Assets/Audio/Tetris_theme.ogg", 0.05f);
 	}
@@ -71,18 +56,11 @@ public:
 	// Called every game loop 'iteration'
 	void Update(float deltaTime) override
 	{
-		lerpIntensity += static_cast<float>(deltaTime) / 2.0f;
-		if (this->m_Material->DiffuseColour != this->m_DestinationColour)
-		{
-			if (lerpIntensity > 1.0f) lerpIntensity = 1.0f;
-			this->m_Material->DiffuseColour = Colour::Lerp(this->m_LerpColour, this->m_DestinationColour, lerpIntensity);
-		}
-		else if (this->m_Material->DiffuseColour == this->m_DestinationColour)
-		{
-			lerpIntensity = 0;
-			this->m_LerpColour = this->m_DestinationColour;
-			this->m_DestinationColour = Random::RGB();
-		}
+		lerpIntensity += static_cast<float>(deltaTime);
+		float sinTemp = static_cast<float>(std::sin(lerpIntensity));
+
+		this->m_Transform->SetPosition(0, 0, 5);
+		this->m_Transform->SetRotation(0, sinTemp * 180, 0);
 
 		if (Input::GetKeyDown(Key::KEY_SPACE))
 		{

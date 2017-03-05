@@ -10,6 +10,9 @@
 #include <FrostyGraphics.h>
 #include <System/File.h>
 
+#include <Graphics/Light.h>
+#include <Graphics/DirectionalLight.h>
+
 class FROSTY_CORE_API Shader
 {
 public:
@@ -28,6 +31,9 @@ public:
 	inline void SetUniform(const std::string& uniformName, const Vector4f& value) { glUniform4f(this->m_Uniforms.at(uniformName), value.X, value.Y, value.Z, value.W); }
 	inline void SetUniform(const std::string& uniformName, const Matrix4f& value) { glUniformMatrix4fv(this->m_Uniforms.at(uniformName), 1, GL_TRUE, &(value.Elements[0][0])); }
 	void SetUniform(const std::string& uniformName, const Colour& value, bool rgba = true);
+
+	void SetUniform(const std::string& uniformName, const Light& light);
+	void SetUniform(const std::string& uniformName, const DirectionalLight& light);
 
 	inline void SetAttributeLocation(const std::string& attributeName, GLuint attributeLocation) { glBindAttribLocation(this->m_ShaderProgram, attributeLocation, attributeName.c_str()); }
 

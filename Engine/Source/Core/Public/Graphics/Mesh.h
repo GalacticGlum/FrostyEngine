@@ -8,7 +8,7 @@ class FROSTY_CORE_API Mesh
 {
 public:
 	Mesh(const std::string& filePath);
-	Mesh(Vertex* vertices, int verticesSize, int* indices, int indexCount);
+	Mesh(Vertex* vertices, int verticesSize, int* indices, int indexCount, bool calculateNormals = false);
 	~Mesh();
 
 	void Draw() const;

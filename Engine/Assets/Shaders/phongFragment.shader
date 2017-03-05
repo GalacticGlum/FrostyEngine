@@ -1,12 +1,4 @@
-#version 330
-
-in vec2 uvCoordinate;
-out vec4 fragColour;
-
-uniform vec3 materialColour;
-uniform vec3 ambientColour;
-
-uniform sampler2D textureSampler;
+#version 450
 
 struct BaseLight
 {
@@ -20,9 +12,18 @@ struct DirectionalLight
     vec3 direction;
 };
 
+in vec2 uvCoordinate;
+in vec3 normals;
+out vec4 fragColour;
+
+uniform vec3 materialColour;
+uniform vec3 ambientColour;
+uniform sampler2D textureSampler;
+uniform DirectionalLight directionalLight;
+
 vec4 calculateLight(BaseLight baseLight, vec3 direction, vec3 normal)
 {
-    float diffuseFactor = dot(-direction, normal);
+    float diffuseFactor = dot(normal, -direction);
     vec4 diffuseColour = vec4(0, 0, 0, 0); 
 
     if(diffuseFactor > 0)
@@ -35,7 +36,7 @@ vec4 calculateLight(BaseLight baseLight, vec3 direction, vec3 normal)
 
 vec4 calculateDirectionalLight(DirectionalLight directionalLight, vec3 normal)
 {
-    return calculateLight(directionalLight.baseLight, directionalLight.direction, normal);
+    return calculateLight(directionalLight.baseLight, -directionalLight.direction, normal);
 }
 
 void main()
@@ -49,5 +50,6 @@ void main()
         colour *= textureColour;
     }
 
+    light += calculateDirectionalLight(directionalLight, normalize(normals));
     fragColour = colour * light;
 }

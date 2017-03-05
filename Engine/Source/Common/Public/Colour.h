@@ -14,8 +14,8 @@ struct FROSTY_COMMON_API Colour
 	inline Colour(int r, int g, int b) : Colour(r, g, b, 255) {}
 	inline Colour(int r, int g, int b, int a) : R(r), G(g), B(b), A(a) {}
 
-	Colour(const Vector3f& vector);
-	Colour(const Vector4f& vector);
+	explicit Colour(const Vector3f& vector);
+	explicit Colour(const Vector4f& vector);
 
 	bool operator==(const Colour& right) const;
 	bool operator!=(const Colour& right) const;
