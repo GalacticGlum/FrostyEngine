@@ -12,7 +12,7 @@ This repo contains the source code for Frosty Engine along with any assets and d
 
 ## Copyright and Licensing
 
-Frosty Engine is licensed under the MIT license (please see [LICENSE.md](LICENSE.md) for more info). Attribution is appreciated!
+Frosty Engine is licensed under the MIT license (please see [LICENSE](LICENSE) for more info). Attribution is appreciated!
 
 ## Contributing
 
