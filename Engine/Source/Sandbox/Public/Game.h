@@ -44,11 +44,12 @@ public:
 		this->m_Transform = new Transform();
 		this->m_Camera = new Camera();
 
-		m_Material = new Material();
+		this->m_Material = new Material();
+		this->m_Material->SpecularIntensity = 0.1f;
 		this->m_Shader = PhongShader::GetInstance();
 
 		this->m_Shader->SetAmbientColour(Colour(25.5f, 25.5f, 25.5f));
-		this->m_Shader->SetDirectionalLight(DirectionalLight(Light(Colour(251, 255, 181), 0.8f), Vector3f(1, 1, 1)));
+		this->m_Shader->SetDirectionalLight(DirectionalLight(Light(Colour(45, 255, 0), 0.8f), Vector3f(1, 1, 1)));
 
 		m_AudioClip = new AudioClip("Assets/Audio/Tetris_theme.ogg", 0.05f);
 	}
@@ -89,7 +90,7 @@ public:
 	void Render() override
 	{
 		this->m_Shader->Start();
-		this->m_Shader->Update(m_Transform->GetTransformation(), m_Camera->GetViewProjection() * m_Transform->GetTransformation(), *m_Material);
+		this->m_Shader->Update(m_Transform->GetTransformation(), *m_Camera, *m_Material);
 		this->m_Mesh->Draw();
 		this->m_Shader->Stop();
 	}

@@ -6,6 +6,7 @@ layout (location = 2) in vec3 normal;
 
 out vec2 uvCoordinate;
 out vec3 normals;
+out vec3 worldPosition;
 
 uniform mat4 mvpMatrix;
 uniform mat4 transformation;
@@ -15,4 +16,5 @@ void main()
     gl_Position = mvpMatrix * vec4(position, 1.0);
     uvCoordinate = textureCoordinate;
     normals = (transformation * vec4(normal, 0)).xyz;
+    worldPosition = (transformation * vec4(position, 1.0)).xyz;
 }

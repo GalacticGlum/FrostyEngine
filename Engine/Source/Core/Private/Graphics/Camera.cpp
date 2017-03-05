@@ -95,7 +95,7 @@ void Camera::Rotate(const Vector2f& angles)
 	}
 }
 
-Matrix4f Camera::GetViewProjection()
+const Matrix4f Camera::GetViewProjection() const
 {
 	Matrix4f cameraProjection = Matrix4f::Perspective(this->FOV, this->WIDTH / this->HEIGHT, this->Z_NEAR, this->Z_FAR);
 	Matrix4f cameraRotation = Matrix4f::Rotate(this->GetForward(), this->GetUp());

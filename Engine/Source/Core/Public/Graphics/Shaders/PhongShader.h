@@ -16,7 +16,7 @@ public:
 		return &instance;
 	}
 
-	void Update(const Matrix4f& world, const Matrix4f& projection, const Material& material);
+	void Update(const Matrix4f& world, const Camera& camera, const Material& material);
 
 	inline const Colour& GetAmbientColour() { return this->m_AmbientColour; }
 	inline void SetAmbientColour(const Colour& ambientColour) { this->m_AmbientColour = ambientColour; }

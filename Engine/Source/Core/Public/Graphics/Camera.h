@@ -19,19 +19,19 @@ public:
 	inline void Rotate(float angleX, float angleY) { this->Rotate(Vector2f(angleX, angleY)); }
 	void Rotate(const Vector2f& angles);
 
-	inline Vector3f& GetPosition() { return this->m_Position; }
+	inline const Vector3f& GetPosition() const { return this->m_Position; }
 	inline void SetPosition(const Vector3f& position) { this->m_Position = position; }
 
-	inline Vector3f& GetForward() { return this->m_Forward; }
+	inline const Vector3f& GetForward() const { return this->m_Forward; }
 	inline void SetForward(const Vector3f& forward) { this->m_Forward = forward; }
 
-	inline Vector3f& GetUp() { return this->m_Up; }
+	inline const Vector3f& GetUp() const { return this->m_Up; }
 	inline void SetUp(const Vector3f& up) { this->m_Up = up; }
 
-	inline Vector3f GetLeft() const { return this->m_Forward.Cross(this->m_Up).Normalized(); }
-	inline Vector3f GetRight() const { return this->m_Up.Cross(this->m_Forward).Normalized(); }
+	inline const Vector3f GetLeft() const { return this->m_Forward.Cross(this->m_Up).Normalized(); }
+	inline const Vector3f GetRight() const { return this->m_Up.Cross(this->m_Forward).Normalized(); }
 
-	Matrix4f GetViewProjection();
+	const Matrix4f GetViewProjection() const;
 private:
 	const float Z_NEAR = 0.1f;
 	const float Z_FAR = 1000.0f;
