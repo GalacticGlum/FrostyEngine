@@ -41,3 +41,16 @@ void Mesh::Draw() const
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
 }
+
+void Mesh::CalculateNormals(Vertex* vertices, int verticesSize, int* indices, int indexCount)
+{
+	for (int i = 0; i < indexCount; i += 3)
+	{
+		int i0 = indices[i];
+		int i1 = indices[i + 1];
+		int i2 = indices[i + 2];
+
+		Vector3f v1 = vertices[i1].Position - vertices[i0].Position;
+		Vector3f v2 = vertices[i2].Position - vertices[i0].Position;
+	}
+}

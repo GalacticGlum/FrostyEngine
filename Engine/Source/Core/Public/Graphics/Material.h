@@ -11,7 +11,7 @@ struct FROSTY_CORE_API Material
 	Colour DiffuseColour;
 
 	inline Material() : Material(nullptr, Vector3f::One) {}
-	inline Material(const Colour& diffuseColour) : Material(nullptr, diffuseColour) {}
+	inline Material(const Colour& diffuseColour) : DiffuseColour(diffuseColour) {}
 	
 	inline Material(const std::string& diffuseTextureFilePath) : Material(diffuseTextureFilePath, Colour::White) {}
 	Material(const std::string& diffuseTextureFilePath, const Colour& diffuseColour);

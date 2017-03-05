@@ -19,49 +19,51 @@
 #include <Utilities/Random.h>
 #include <System/Delegate.h>
 
-#include <FractalShader.h>
-
 class Game : GameInstance
 {
 public:
 	void Start() override
 	{
-		//Vertex vertices[] =
-		//{
-		//	Vertex(Vector3f(-1, -1, 0), Vector2f(0, 0)),
-		//	Vertex(Vector3f(0, 1, 0), Vector2f(0.5f, 0)),
-		//	Vertex(Vector3f(1, -1, 0), Vector2f(1.0f, 0)),
-		//	Vertex(Vector3f(0, -1, 1), Vector2f(0, 0.5f))
-		//};
-
-		//int indices[] =
-		//{
-		//	0, 1, 3,
-		//	3, 1, 2,
-		//	2, 1, 0,
-		//	0, 2, 3
-		//};
-
 		Vertex vertices[] =
 		{
-			Vertex(Vector3f(0, 0, 0), Vector2f(0, 0)),
-			Vertex(Vector3f(16, 0, 0), Vector2f(0, 1)),
-			Vertex(Vector3f(0, 6, 0), Vector2f(1, 1)),
-			Vertex(Vector3f(16, 6, 0), Vector2f(1, 0))
+			Vertex(Vector3f(-1, -1, 0), Vector2f(0, 0)),
+			Vertex(Vector3f(0, 1, 0), Vector2f(0.5f, 0)),
+			Vertex(Vector3f(1, -1, 0), Vector2f(1.0f, 0)),
+			Vertex(Vector3f(0, -1, 1), Vector2f(0, 0.5f))
 		};
 
 		int indices[] =
 		{
-			0, 1, 2,
-			2, 3, 1
+			0, 1, 3,
+			3, 1, 2,
+			2, 1, 0,
+			0, 3, 2
 		};
 
-		this->m_Mesh = new Mesh(vertices, 4, indices, 6);
+		//Vertex vertices[] =
+		//{
+		//	Vertex(Vector3f(-1, -1, 0.5773f), Vector2f(0, 0)),
+		//	Vertex(Vector3f(0, -1, -1.15475f), Vector2f(0.5f, 0)),
+		//	Vertex(Vector3f(1, -1, 0.5773f), Vector2f(1, 0)),
+		//	Vertex(Vector3f(0, 1, 0), Vector2f(0.5f, 1))
+		//};
+
+		//int indices[] =
+		//{
+		//	0, 3, 1,
+		//	1, 3, 2,
+		//	2, 3, 0,
+		//	1, 2, 0
+		//};
+
+		//this->m_Mesh = new Mesh(vertices, 4, indices, 12);
+
+		this->m_Mesh = new Mesh(vertices, 4, indices, 12);
 		this->m_Transform = new Transform();
 		this->m_Camera = new Camera();
 
-		m_Material = new Material("Assets/Textures/Grid.psd", Colour(0, 255, 0));
-		this->m_Shader = FractalShader::GetInstance();
+		m_Material = new Material(Colour(0, 255, 0));
+		this->m_Shader = PhongShader::GetInstance();
 
 		m_AudioClip = new AudioClip("Assets/Audio/Tetris_theme.ogg", 0.05f);
 	}
@@ -104,15 +106,12 @@ public:
 		}
 
 		this->m_Camera->Update(deltaTime);
-
-		this->m_Shader->m_LightPosition = Vector2f(400.0f * 16.0f / 800.0f, 9.0f - 300.0f * 9.0f / 600.0f);
 	}
 
 	void Render() override
 	{
 		this->m_Shader->Start();
-		//this->m_Shader->Update(m_Transform->GetTransformation(), m_Camera->GetViewProjection() * m_Transform->GetTransformation(), *m_Material);
-		this->m_Shader->Update(Matrix4f::Orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f), *m_Material);
+		this->m_Shader->Update(m_Transform->GetTransformation(), m_Camera->GetViewProjection() * m_Transform->GetTransformation(), *m_Material);
 		this->m_Mesh->Draw();
 		this->m_Shader->Stop();
 	}
@@ -139,7 +138,7 @@ private:
 	AudioClip* m_AudioClip;
 
 	Mesh* m_Mesh;
-	FractalShader* m_Shader;
+	PhongShader* m_Shader;
 	Transform* m_Transform;
 	Camera* m_Camera;
 	Material* m_Material;

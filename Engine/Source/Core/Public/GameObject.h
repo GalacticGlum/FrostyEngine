@@ -22,7 +22,6 @@ public:
 	GameObject& operator=(GameObject&& other) = delete;
 
 private:
-
 	std::string m_Name;
 	void Update(float deltaTime);
 

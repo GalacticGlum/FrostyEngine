@@ -16,6 +16,8 @@ private:
 	Mesh(Mesh& mesh);
 	void operator=(Mesh& mesh) {}
 
+	void CalculateNormals(Vertex* vertices, int verticesSize, int* indices, int indexCount);
+
 	GLuint m_VertexBuffer;
 	GLuint m_IndexBuffer;
 	GLuint m_Size;
