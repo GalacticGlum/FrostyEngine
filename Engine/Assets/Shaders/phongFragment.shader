@@ -12,6 +12,21 @@ struct DirectionalLight
     vec3 direction;
 };
 
+struct AttenuationCurve
+{
+    float constantFactor;
+    float linearFactor;
+    float exponentialFactor;
+};
+
+struct PointLight
+{
+    BaseLight baseLight;
+    AttenuationCurve attenuation;
+    vec3 position;
+    float radius;
+};
+
 in vec2 uvCoordinate;
 in vec3 normals;
 in vec3 worldPosition;
@@ -22,6 +37,9 @@ uniform vec3 ambientColour;
 uniform sampler2D textureSampler;
 
 uniform DirectionalLight directionalLight;
+// TODO: Use uniform buffer.
+uniform PointLight pointLights[10];
+
 uniform vec3 cameraPosition;
 uniform float specularIntensity;
 uniform float specularPower;
@@ -57,6 +75,26 @@ vec4 calculateDirectionalLight(DirectionalLight directionalLight, vec3 normal)
     return calculateLight(directionalLight.baseLight, -directionalLight.direction, normal);
 }
 
+vec4 calculatePointLight(PointLight pointLight, vec3 normal)
+{
+    vec3 direction = worldPosition - pointLight.position;
+    float directionDistance = length(direction);
+
+    if(directionDistance > pointLight.radius)
+    {
+        return vec4(0, 0, 0, 0);
+    }
+
+    direction = normalize(direction);
+
+    vec4 lightColour = calculateLight(pointLight.baseLight, direction, normal);
+    float attenuation = pointLight.attenuation.constantFactor +
+        pointLight.attenuation.linearFactor * directionDistance +
+        pointLight.attenuation.exponentialFactor * pow(directionDistance, 2);
+
+    return lightColour / attenuation;
+}
+
 void main()
 {
     vec4 light = vec4(ambientColour, 1);
@@ -68,6 +106,16 @@ void main()
         colour *= textureColour;
     }
 
-    light += calculateDirectionalLight(directionalLight, normalize(normals));
+    vec3 surfaceNormal = normalize(normals);
+
+    light += calculateDirectionalLight(directionalLight, surfaceNormal);
+    for(int i = 0; i < 10; i++)
+    {
+        if(pointLights[i].baseLight.intensity > 0)
+        {
+            light += calculatePointLight(pointLights[i], surfaceNormal);
+        }
+    }
+
     fragColour = colour * light;
 }

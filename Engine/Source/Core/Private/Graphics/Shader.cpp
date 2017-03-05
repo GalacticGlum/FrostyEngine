@@ -133,3 +133,16 @@ void Shader::SetUniform(const std::string& uniformName, const DirectionalLight& 
 	this->SetUniform(uniformName + ".baseLight", light.BaseLight);
 	this->SetUniform(uniformName + ".direction", light.Direction);
 }
+
+void Shader::SetUniform(const std::string& uniformName, const PointLight& light)
+{
+	this->SetUniform(uniformName + ".baseLight", light.BaseLight);
+
+	this->SetUniform(uniformName + ".attenuation.constantFactor", light.Attenuation.ConstantFactor);
+	this->SetUniform(uniformName + ".attenuation.linearFactor", light.Attenuation.LinearFactor);
+	this->SetUniform(uniformName + ".attenuation.exponentialFactor", light.Attenuation.ExponentialFactor);
+
+	this->SetUniform(uniformName + ".position", light.Position);
+	this->SetUniform(uniformName + ".radius", light.Radius);
+
+}
