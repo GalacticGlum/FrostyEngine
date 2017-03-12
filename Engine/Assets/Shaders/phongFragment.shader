@@ -1,5 +1,8 @@
 #version 450
 
+const int MAX_POINT_LIGHTS = 10;
+const int MAX_SPOT_LIGHTS = 10;
+
 struct BaseLight
 {
     vec3 colour;
@@ -27,6 +30,13 @@ struct PointLight
     float radius;
 };
 
+struct SpotLight
+{
+    PointLight pointLight;
+    vec3 direction;
+    float cutoff;
+};
+
 in vec2 uvCoordinate;
 in vec3 normals;
 in vec3 worldPosition;
@@ -37,8 +47,10 @@ uniform vec3 ambientColour;
 uniform sampler2D textureSampler;
 
 uniform DirectionalLight directionalLight;
+
 // TODO: Use uniform buffer.
-uniform PointLight pointLights[10];
+uniform PointLight pointLights[MAX_POINT_LIGHTS];
+uniform SpotLight spotLights[MAX_SPOT_LIGHTS];
 
 uniform vec3 cameraPosition;
 uniform float specularIntensity;
@@ -95,6 +107,20 @@ vec4 calculatePointLight(PointLight pointLight, vec3 normal)
     return lightColour / attenuation;
 }
 
+vec4 calculateSpotLight(SpotLight spotLight, vec3 normal)
+{
+    vec3 direction = normalize(worldPosition - spotLight.pointLight.position);
+    float factor = dot(direction, normalize(spotLight.direction));
+    
+    vec4 result = vec4(0, 0, 0, 0);
+    if(factor > spotLight.cutoff)
+    {
+        result = calculatePointLight(spotLight.pointLight, normal) * (1.0 - (1.0 - factor) / (1.0 - spotLight.cutoff));
+    }
+
+    return result;
+}
+
 void main()
 {
     vec4 light = vec4(ambientColour, 1);
@@ -109,11 +135,19 @@ void main()
     vec3 surfaceNormal = normalize(normals);
 
     light += calculateDirectionalLight(directionalLight, surfaceNormal);
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < MAX_POINT_LIGHTS; i++)
     {
         if(pointLights[i].baseLight.intensity > 0)
         {
             light += calculatePointLight(pointLights[i], surfaceNormal);
+        }
+    }
+
+    for(int i = 0; i < MAX_SPOT_LIGHTS; i++)
+    {
+        if(spotLights[i].pointLight.baseLight.intensity > 0)
+        {
+            light += calculateSpotLight(spotLights[i], surfaceNormal);
         }
     }
 

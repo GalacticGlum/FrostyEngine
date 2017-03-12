@@ -144,5 +144,12 @@ void Shader::SetUniform(const std::string& uniformName, const PointLight& light)
 
 	this->SetUniform(uniformName + ".position", light.Position);
 	this->SetUniform(uniformName + ".radius", light.Radius);
+}
 
+void Shader::SetUniform(const std::string& uniformName, const SpotLight& light)
+{
+	this->SetUniform(uniformName + ".pointLight", light.BaseLight);
+
+	this->SetUniform(uniformName + ".direction", light.Direction);
+	this->SetUniform(uniformName + ".cutoff", light.Cutoff);
 }

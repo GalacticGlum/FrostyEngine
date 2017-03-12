@@ -13,6 +13,6 @@ struct FROSTY_CORE_API PointLight
 	Vector3f Position;
 	float Radius;
 
-	inline PointLight(const Light& BaseLight, const AttenuationCurve& attenuation, const Vector3f& position, float radius) : 
+	inline PointLight(const Light& BaseLight = Light(), const AttenuationCurve& attenuation = AttenuationCurve(), const Vector3f& position = Vector3f::Zero, float radius = 0) : 
 		BaseLight(BaseLight), Attenuation(attenuation), Position(position), Radius(radius) {}
 };

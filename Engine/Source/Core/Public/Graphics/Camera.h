@@ -11,7 +11,7 @@ class FROSTY_CORE_API Camera
 public:
 	inline Camera() : Camera(Vector3f::Zero) {}
 	inline Camera(const Vector3f& position) : Camera(position, Vector3f::Forward, Vector3f::Up) {}
-	inline Camera(const Vector3f& position, const Vector3f& forward, const Vector3f& up)  : m_Position(position), m_Forward(forward), m_Up(up) {}
+	inline Camera(const Vector3f& position, const Vector3f& forward, const Vector3f& up)  : m_Position(position), m_Forward(forward.Normalized()), m_Up(up.Normalized()) {}
 
 	void Update(float deltaTime);
 

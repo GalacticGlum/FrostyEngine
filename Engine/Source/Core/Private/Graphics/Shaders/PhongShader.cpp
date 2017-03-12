@@ -20,9 +20,11 @@ PhongShader::PhongShader() : Shader("Assets/Shaders/phongVertex.shader", "Assets
 	this->AddUniform("directionalLight.baseLight.intensity");
 	this->AddUniform("directionalLight.direction");
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < MAX_POINT_LIGHTS; i++)
 	{
-		std::string name = "pointLights[" + std::to_string(i) + "]";
+		std::ostringstream stringBuilder;
+		stringBuilder << "pointLights[" << i << "]";
+		std::string name = stringBuilder.str();
 
 		this->AddUniform(name + ".baseLight.colour");
 		this->AddUniform(name + ".baseLight.intensity");
@@ -33,6 +35,26 @@ PhongShader::PhongShader() : Shader("Assets/Shaders/phongVertex.shader", "Assets
 
 		this->AddUniform(name + ".position");
 		this->AddUniform(name + ".radius");
+	}
+
+	for (int i = 0; i < MAX_SPOT_LIGHTS; i++)
+	{
+		std::ostringstream stringBuilder;
+		stringBuilder << "spotLights[" << i << "]";
+		std::string name = stringBuilder.str();
+
+		this->AddUniform(name + ".pointLight.baseLight.colour");
+		this->AddUniform(name + ".pointLight.baseLight.intensity");
+
+		this->AddUniform(name + ".pointLight.attenuation.constantFactor");
+		this->AddUniform(name + ".pointLight.attenuation.linearFactor");
+		this->AddUniform(name + ".pointLight.attenuation.exponentialFactor");
+
+		this->AddUniform(name + ".pointLight.position");
+		this->AddUniform(name + ".pointLight.radius");
+
+		this->AddUniform(name + ".direction");
+		this->AddUniform(name + ".cutoff");
 	}
 }
 
@@ -52,21 +74,35 @@ void PhongShader::Update(const Matrix4f& world, const Camera& camera, const Mate
 
 	this->SetUniform("materialColour", material.DiffuseColour, false);
 	this->SetUniform("ambientColour", this->m_AmbientColour, false);
+
 	this->SetUniform("directionalLight", this->m_DirectionalLight);
+
+	for (int i = 0; i < this->m_ActivePointLights; i++)
+	{
+		std::ostringstream stringBuilder;
+		stringBuilder << "pointLights[" << i << "]";
+		std::string name = stringBuilder.str();
+
+		this->SetUniform(name, this->m_PointLights[i]);
+	}
+
+	for (int i = 0; i < this->m_ActiveSpotLights; i++)
+	{
+		std::ostringstream stringBuilder;
+		stringBuilder << "spotLights[" << i << "]";
+		std::string name = stringBuilder.str();
+
+		this->SetUniform(name, this->m_SpotLights[i]);
+	}
 
 	this->SetUniform("specularIntensity", material.SpecularIntensity);
 	this->SetUniform("specularPower", material.SpecularPower);
 	this->SetUniform("cameraPosition", camera.GetPosition());
-
-	for (int i = 0; i < this->m_ActivePointLights; i++)
-	{
-		this->SetUniform("pointLights[" + std::to_string(i) + "]", this->m_PointLights[i]);
-	}
 }
 
 void PhongShader::SetPointLights(PointLight* pointLights, int size)
 {
-	if (size > 10)
+	if (size > MAX_POINT_LIGHTS)
 	{
 		std::cerr << "PhongShader::SetPointLights: Too many point lights!\n";
 	}
@@ -74,6 +110,19 @@ void PhongShader::SetPointLights(PointLight* pointLights, int size)
 	{
 		this->m_ActivePointLights = size;
 		this->m_PointLights = pointLights;
+	}
+}
+
+void PhongShader::SetSpotLight(SpotLight* spotLights, int size)
+{
+	if(size > MAX_SPOT_LIGHTS)
+	{
+		std::cerr << "PhongShader::SetSpotLights: Too many spot lights!\n";
+	}
+	else
+	{
+		this->m_ActiveSpotLights = size;
+		this->m_SpotLights = spotLights;
 	}
 }
 

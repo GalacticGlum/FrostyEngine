@@ -7,7 +7,7 @@
 
 struct FROSTY_CORE_API DirectionalLight
 {
-	inline DirectionalLight(const Light& light, const Vector3f& direction) :
+	inline DirectionalLight(const Light& light = Light(), const Vector3f& direction = Vector3f::Zero) :
 		BaseLight(light), Direction(direction.Normalized()) {}
 
 	Light BaseLight;

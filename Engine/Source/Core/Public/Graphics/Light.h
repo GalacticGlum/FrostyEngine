@@ -5,9 +5,9 @@
 
 struct FROSTY_CORE_API Light
 {
-	inline Light(const Colour& colour, float intensity) : 
-		LightColour(colour), Intensity(intensity) {}
-
 	Colour LightColour;
 	float Intensity;
+
+	inline Light(const Colour& colour = Colour::Black, float intensity = 0) : 
+		LightColour(colour), Intensity(intensity) {}
 };

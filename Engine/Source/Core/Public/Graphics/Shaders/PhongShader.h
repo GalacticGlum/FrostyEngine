@@ -7,6 +7,7 @@
 #include <Graphics/Light.h>
 #include <Graphics/DirectionalLight.h>
 #include <Graphics/PointLight.h>
+#include <Graphics/SpotLight.h>
 
 class FROSTY_CORE_API PhongShader : public Shader 
 {
@@ -26,12 +27,19 @@ public:
 	inline void SetDirectionalLight(const DirectionalLight& light) { this->m_DirectionalLight = light; }
 
 	void SetPointLights(PointLight* pointLights, int size);
+	void SetSpotLight(SpotLight* spotLights, int size);
 private:
+	const static int MAX_POINT_LIGHTS = 10;
+	const static int MAX_SPOT_LIGHTS = 10;
+
 	PhongShader();
 
 	Colour m_AmbientColour;
 	DirectionalLight m_DirectionalLight;
 
 	int m_ActivePointLights;
+	int m_ActiveSpotLights;
+
 	PointLight* m_PointLights;
+	SpotLight* m_SpotLights;
 };

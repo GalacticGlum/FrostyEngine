@@ -24,22 +24,6 @@ class Game : GameInstance
 public:
 	void Start() override
 	{
-		//Vertex vertices[] = 
-		//{ 
-		//	Vertex(Vector3f(-1.0f, -1.0f, 0.5773f), Vector2f(0.0f, 0.0f)),
-		//	Vertex(Vector3f(0.0f, -1.0f, -1.15475f), Vector2f(0.5f, 0.0f)),
-		//	Vertex(Vector3f(1.0f, -1.0f, 0.5773f), Vector2f(1.0f, 0.0f)),
-		//	Vertex(Vector3f(0.0f, 1.0f, 0.0f), Vector2f(0.5f, 1.0f))
-		//};
-
-		//int indices[] = 
-		//{
-		//	0, 3, 1,
-		//	1, 3, 2,
-		//	2, 3, 0,
-		//	1, 2, 0 
-		//};
-
 		float fieldDepth = 10.0f;
 		float fieldWidth = 10.0f;
 
@@ -68,10 +52,18 @@ public:
 		this->m_Shader->SetAmbientColour(Colour(25.5f, 25.5f, 25.5f));
 		this->m_Shader->SetDirectionalLight(DirectionalLight(Light(Colour::White, 0.1f), Vector3f(1, 1, 1)));
 
-		this->m_PointLight = new PointLight(Light(Colour(0, 255.5f, 0), 0.4f), AttenuationCurve(0, 0, 1), Vector3f(-2, 0, 5), 10);
-		this->m_Shader->SetPointLights(this->m_PointLight, 1);
+		PointLight* lights = new PointLight[1];
+		lights[0] = PointLight(Light(Colour(0, 255, 0), 0.4f), AttenuationCurve(0, 0, 1), Vector3f(0, 0, 0), 10);
+		this->m_Shader->SetPointLights(lights, 1);
+
+		spotLights = new SpotLight[1];
+		spotLights[0] = SpotLight(PointLight(Light(Colour(255, 255.0f / 2.0f, 0), 0.8f), AttenuationCurve(0, 0, 1), Vector3f(-2, 0, 5), 10), Vector3f(1, 1, 1), 0.7f);
+
+		this->m_Shader->SetSpotLight(spotLights, 1);
 
 		m_AudioClip = new AudioClip("Assets/Audio/Tetris_theme.ogg", 0.05f);
+
+		this->m_Transform->SetPosition(0, -1, 5);
 	}
 
 	// Called every game loop 'iteration'
@@ -79,8 +71,8 @@ public:
 	{
 		lerpIntensity += static_cast<float>(deltaTime);
 
-		this->m_Transform->SetPosition(0, -1, 5);
-		this->m_PointLight->Position = (Vector3f(3, 0, 8.0f * (float)(std::sin(lerpIntensity) + 1.0 / 2.0) + 10));
+		spotLights[0].BaseLight.Position = this->m_Camera->GetPosition();
+		spotLights[0].Direction = -this->m_Camera->GetForward();
 
 		if (Input::GetKeyDown(Key::KEY_SPACE))
 		{
@@ -140,7 +132,8 @@ private:
 	Transform* m_Transform;
 	Camera* m_Camera;
 	Material* m_Material;
-	PointLight* m_PointLight;
+
+	SpotLight* spotLights;
 
 	Colour m_LerpColour;
 	Colour m_DestinationColour;

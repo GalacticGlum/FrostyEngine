@@ -13,6 +13,7 @@
 #include <Graphics/Light.h>
 #include <Graphics/DirectionalLight.h>
 #include <Graphics/PointLight.h>
+#include <Graphics/SpotLight.h>
 #include <Graphics/AttenuationCurve.h>
 
 class FROSTY_CORE_API Shader
@@ -37,6 +38,7 @@ public:
 	void SetUniform(const std::string& uniformName, const Light& light);
 	void SetUniform(const std::string& uniformName, const DirectionalLight& light);
 	void SetUniform(const std::string& uniformName, const PointLight& light);
+	void SetUniform(const std::string& uniformName, const SpotLight& light);
 
 	inline void SetAttributeLocation(const std::string& attributeName, GLuint attributeLocation) { glBindAttribLocation(this->m_ShaderProgram, attributeLocation, attributeName.c_str()); }
 

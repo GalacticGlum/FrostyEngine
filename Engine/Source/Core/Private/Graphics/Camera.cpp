@@ -80,18 +80,18 @@ void Camera::Move(const Vector3f& direction, float speed)
 
 void Camera::Rotate(const Vector2f& angles)
 {
-	Vector3f horizontalAxis = Vector3f::Up.Cross(m_Forward).Normalized();
+	Vector3f horizontalAxis = Vector3f::Up.Cross(m_Forward).Normalize();
 
 	if (angles.X != 0)
 	{
-		this->m_Forward = this->m_Forward.Rotate(angles.X, horizontalAxis).Normalized();
-		this->m_Up = this->m_Forward.Cross(horizontalAxis).Normalized();
+		this->m_Forward = this->m_Forward.Rotate(angles.X, horizontalAxis).Normalize();
+		this->m_Up = this->m_Forward.Cross(horizontalAxis).Normalize();
 	}
 
 	if (angles.Y != 0)
 	{
-		this->m_Forward = this->m_Forward.Rotate(angles.Y, Vector3f::Up).Normalized();
-		this->m_Up = this->m_Forward.Cross(horizontalAxis).Normalized();
+		this->m_Forward = this->m_Forward.Rotate(angles.Y, Vector3f::Up).Normalize();
+		this->m_Up = this->m_Forward.Cross(horizontalAxis).Normalize();
 	}
 }
 

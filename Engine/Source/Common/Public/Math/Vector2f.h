@@ -52,6 +52,8 @@ struct FROSTY_COMMON_API Vector2f
 	inline friend FROSTY_COMMON_API Vector2f operator*(Vector2f left, const Vector2f& right) { return left.Multiply(right); }
 	inline friend FROSTY_COMMON_API Vector2f operator/(Vector2f left, const Vector2f& right) { return left.Divide(right); }
 
+	inline friend FROSTY_COMMON_API Vector2f operator-(Vector2f left) { return left.Negative(); }
+
 	inline friend FROSTY_COMMON_API Vector2f operator+(Vector2f left, float right) { return left.Add(right); }
 	inline friend FROSTY_COMMON_API Vector2f operator-(Vector2f left, float right) { return left.Subtract(right); }
 	inline friend FROSTY_COMMON_API Vector2f operator*(Vector2f left, float right) { return left.Multiply(right); }
